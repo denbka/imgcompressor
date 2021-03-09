@@ -1,0 +1,191 @@
+@font-face {
+  font-family: 'Golos';
+  src: url("./../fonts/Golos-Text_Black.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Golos';
+  src: url("./../fonts/Golos-Text_Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Golos';
+  src: url("./../fonts/Golos-Text_Regular.ttf");
+  font-weight: 400;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+fieldset {
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+}
+
+.container {
+  width: 80%;
+  margin: 25px auto;
+  font-size: 18px;
+  font-family: 'Golos';
+}
+
+.button-primary {
+  font-family: 'Golos';
+  font-weight: 500;
+  height: 60px;
+  width: 200px;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background: #7e8ee9;
+  color: #fff;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background: #6877cc;
+}
+
+.button-primary[disabled] {
+  background: #d3d6e9;
+  cursor: progress;
+}
+
+.form {
+  margin: 50px 0;
+}
+
+.form__title {
+  font-size: 48px;
+  margin-bottom: 50px;
+}
+
+label {
+  display: block;
+  position: relative;
+  height: 1em;
+  padding-left: 4rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  font-size: 2.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+label:hover input:not(:checked) ~ .radio {
+  opacity: 0.8;
+}
+
+.bulgy-radios {
+  background: #fff;
+  border-radius: 1rem;
+}
+
+.bulgy-radios label {
+  display: block;
+  position: relative;
+  height: 1em;
+  padding-left: 4rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  font-size: 2.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.bulgy-radios label:hover input:not(:checked) ~ .radio {
+  opacity: 0.8;
+}
+
+.bulgy-radios .label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 3rem;
+}
+
+.bulgy-radios .label span {
+  line-height: 1em;
+}
+
+.bulgy-radios input {
+  position: absolute;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  left: -2000px;
+}
+
+.bulgy-radios input:checked ~ .radio {
+  background-color: #7e8ee9;
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.bulgy-radios input:checked ~ .radio::after {
+  opacity: 1;
+}
+
+.bulgy-radios input:checked ~ .label {
+  color: #7e8ee9;
+}
+
+.bulgy-radios input:checked ~ .label span {
+  -webkit-animation: bulge .5s forwards;
+          animation: bulge .5s forwards;
+}
+
+.radio {
+  position: absolute;
+  top: 0.2rem;
+  left: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: #c9ded6;
+  border-radius: 50%;
+}
+
+.radio::after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  top: .5rem;
+  left: .5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #fff;
+}
+/*# sourceMappingURL=main.css.map */

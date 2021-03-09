@@ -1,0 +1,137 @@
+$color-primary: #7e8ee9
+
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+// canvas
+//     position: absolute
+//     top: -1000px
+
+fieldset
+    border: 1px solid grey
+    border-radius: 3px
+    padding: 15px
+
+h1,h2,h3
+    font-weight: 800
+
+.container
+    width: 80%
+    margin: 25px auto
+    font-size: 18px
+    font-family: 'Golos'
+
+.button-primary
+    font-family: 'Golos'
+    font-weight: 500
+    height: 60px
+    width: 200px
+    font-size: 18px
+    display: flex
+    align-items: center
+    justify-content: center
+    border: none
+    background: $color-primary
+    color: #fff
+    border-radius: 3px
+    outline: 0
+    cursor: pointer
+    &:hover
+        background: #6877cc
+    &[disabled]
+        background: #d3d6e9
+        cursor: progress
+
+
+.form
+    margin: 50px 0
+    &__title
+        font-size: 48px
+        margin-bottom: 50px
+
+
+
+
+
+
+
+
+
+//radio-buttons
+label
+    display: block
+    position: relative
+    height: 1em
+    padding-left: 4rem
+    margin-bottom: 1.75rem
+    cursor: pointer
+    font-size: 2.5rem
+    user-select: none
+    color: #555
+    letter-spacing: 1px
+    &:hover input:not(:checked) ~ .radio
+        opacity: 0.8
+
+
+.bulgy-radios
+    background: #fff
+    border-radius: 1rem
+  
+    label
+        display: block
+        position: relative
+        height: 1em
+        padding-left: 4rem
+        margin-bottom: 1.75rem
+        cursor: pointer
+        font-size: 2.5rem
+        user-select: none
+        color: #555
+        letter-spacing: 1px
+        &:hover input:not(:checked) ~ .radio
+            opacity: 0.8
+    .label
+        display: flex
+        align-items: center
+        padding-right: 3rem
+        span
+            line-height: 1em
+    input
+        position: absolute
+        cursor: pointer
+        height: 0
+        width: 0
+        left: -2000px
+
+        &:checked
+            ~ .radio
+                background-color: $color-primary
+                transition: background .3s
+                &::after
+                    opacity: 1
+
+            ~ .label
+                color: $color-primary
+                span
+                    animation: bulge .5s forwards
+
+.radio
+    position: absolute
+    top: 0.2rem
+    left: 0
+    height: 2.5rem
+    width: 2.5rem
+    background: #c9ded6
+    border-radius: 50%
+    &::after
+        content: ''
+        position: absolute
+        opacity: 0
+        top: .5rem
+        left: .5rem
+        width: 1.5rem
+        height: 1.5rem
+        border-radius: 50%
+        background: #fff
