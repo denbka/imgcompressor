@@ -37,11 +37,11 @@ module.exports = {
                 test: /\.(scss|css|sass)$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
-            {
-                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                type: 'assets/img',
-            },
-            { test: /\.(|woff|woff2|eot|ttf)$/, use: ['url-loader?limit=100000'] }
+            // {
+            //     test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+            //     type: 'assets/img',
+            // },
+            { test: /\.(|woff|woff2|eot|ttf|jpe?g)$/, use: ['url-loader?limit=100000'] }
         ],
     },
     plugins: [
