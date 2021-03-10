@@ -1,6 +1,6 @@
 <form class="form">
     <h3 class="form__title">Выбор формата</h3>
-    <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label">
+    <div class="bulgy-radios change-cropp-inputs" role="radiogroup" aria-labelledby="bulgy-radios-label">
         <label>
             <input type="radio" name="options" checked />
             <span class="radio"></span>
@@ -15,6 +15,19 @@
             <input type="radio" name="options" />
             <span class="radio"></span>
             <span class="label">20x30</span>
+        </label>
+    </div>
+    <h3 class="form__title">Выбор рамки</h3>
+    <div class="bulgy-radios change-border-inputs" role="radiogroup" aria-labelledby="bulgy-radios-label">
+        <label>
+            <input value="#fff" type="radio" name="options" checked />
+            <span class="radio"></span>
+            <span class="label">Белый</span>
+        </label>
+        <label>
+            <input value="#000" type="radio" name="options" />
+            <span class="radio"></span>
+            <span class="label">Черный</span>
         </label>
     </div>
 </form>
