@@ -1,36 +1,35 @@
 <form class="form" enctype="multipart/form-data">
     <h3 class="form__title">Выбор формата</h3>
-    <div class="bulgy-radios change-cropp-inputs" role="radiogroup" aria-labelledby="bulgy-radios-label">
+    <fieldset id="cropp" class="bulgy-radios change-cropp-inputs" role="radiogroup">
         <label>
-            <input type="radio" name="options" checked />
+            <input type="radio" name="cropp" checked />
             <span class="radio"></span>
             <span class="label">10x15</span>
         </label>
         <label>
-            <input type="radio" name="options" />
+            <input type="radio" name="cropp" />
             <span class="radio"></span>
             <span class="label">15x20</span>
         </label>
         <label>
-            <input type="radio" name="options" />
+            <input type="radio" name="cropp" />
             <span class="radio"></span>
             <span class="label">20x30</span>
         </label>
-    </div>
+    </fieldset>
     <h3 class="form__title">Выбор рамки</h3>
-    <div class="bulgy-radios change-border-inputs" role="radiogroup" aria-labelledby="bulgy-radios-label">
+    <fieldset id="color" class="bulgy-radios change-border-inputs" role="radiogroup">
         <label>
-            <input value="#fff" type="radio" name="options" checked />
+            <input value="#fff" type="radio" name="color" checked />
             <span class="radio"></span>
             <span class="label">Белый</span>
         </label>
         <label>
-            <input value="#000" type="radio" name="options" />
+            <input value="#000" type="radio" name="color" />
             <span class="radio"></span>
             <span class="label">Черный</span>
         </label>
-    </div>
-    <input type="file" class="filereader">
+    </fieldset>
 </form>
 <button class="button-primary">Кадрировать</button>
 
