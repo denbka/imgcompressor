@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let borderColor = '#fff'
 
 
-    const renderImg = async (data, formData) => {
-        return await Promise.all(Object.entries(data).map(async (item, key) => {
+    const renderImg = async (data) => {
+        const formData = new FormData()
+        await Promise.all(Object.entries(data).map(async (item, key) => {
             const directory = item[0]
             const files = item[1]
             await Promise.all(files.map(async fileName => {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 formData.append('image', file)
             }))
         }))
+        return formData
     }
 
     const getBorderColor = () => {
@@ -38,10 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()
         button.disabled = true
         getBorderColor()   
-        const formData = new FormData()
         try {
             const response = await axios.get('http://localhost:8000/api/messages')
-            await renderImg(response.data.data, formData)
+            const formData = await renderImg(response.data.data, formData)
+            console.log(formData)
             await axios.post(`http://localhost:8000/api/uploads`, formData)
         } catch(error) {
             console.log(error)
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function dataURLtoFile(dataurl, filename) {
  
-    const arr = dataurl.split(','),
+    let arr = dataurl.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), 
         n = bstr.length, 
