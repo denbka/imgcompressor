@@ -1,5 +1,9 @@
 import axios from 'axios'
+import { io } from 'socket.io-client'
+
 document.addEventListener("DOMContentLoaded", () => {
+      
+
     const output = document.querySelector('.output-container')
     const button = document.querySelector('.button-primary')
     const changeBorderInputs = document.querySelectorAll('.change-border-inputs > label > input')
@@ -21,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const files = item[1]
             await Promise.all(files.map(async fileName => {
                 const img = await axios.get(`http://localhost:8000/api/uploads/${directory}/${fileName}`)
-                const file = await convertAndCroppImage(img.data.file, fileName, directory)
+                const file = await convertAndCroppImage(img.data.file, fileName, directory, 'google')
                 formData.append('image', file)
             }))
         }))
@@ -52,7 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const convertAndCroppImage = (imgPath, fileName, directory) => {
+    const socket = io('http://localhost:8000')
+    //событие на сервак
+    // socket.emit('chat message', input.value)
+
+    //принимаем евент
+    socket.on('getImageFromWatsapp', async ({ file, fileName, directory }) => {
+        const data = await convertAndCroppImage(file, fileName, directory, 'whatsapp')
+        try {
+            socket.emit('setImageFromWatsapp', {data, fileName, directory})
+        }
+        catch(e) {
+            console.log(e)
+        }
+    })
+
+    const convertAndCroppImage = (imgPath, fileName, directory, type = 'google') => {
         return new Promise((resolve, reject) => {
             const img = new Image()
             img.src = `data:image/jpeg;base64, ${imgPath}`
@@ -82,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.drawImage(img, x, y, innerWidth, innerHeight)
                 const imgSrc = canvas.toDataURL('image/jpeg')
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
-                resolve(dataURLtoFile(imgSrc,`${directory}###${fileName.split('.')[0]}.jpg`))
+                resolve(type === 'whatsapp' ? imgSrc : dataURLtoFile(imgSrc,`${directory}###${fileName.split('.')[0]}.jpg`))
             }
         })
     }
